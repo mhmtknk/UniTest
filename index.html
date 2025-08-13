@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VIZJA (UEHS) — Üniversite Detay</title>
+  <style>
+    :root{
+      --bg:#f8fafc; --card:#ffffff; --text:#0f172a; --muted:#475569; --line:#e2e8f0; --brand:#2563eb; --brand-2:#1e40af; --badge:#eef2ff; --success:#16a34a; --chip:#f1f5f9;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";background:var(--bg);color:var(--text)}
+    a{color:var(--brand);text-decoration:none}
+    .container{max-width:1200px;margin:0 auto;padding:24px}
+    .grid{display:grid;gap:16px}
+    .grid-2{grid-template-columns:1fr}
+    .grid-3{grid-template-columns:1fr}
+    @media(min-width:768px){.grid-2{grid-template-columns:1.2fr .8fr}.grid-3{grid-template-columns:repeat(3,1fr)}}
+
+    /* Cards */
+    .card{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 2px 10px rgba(2,6,23,.04)}
+    .card .body{padding:20px}
+    .card h3{margin:0 0 8px 0;font-size:16px}
+
+    /* Hero */
+    .hero{padding:28px 24px}
+    .badges{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px}
+    .badge{font-size:12px;padding:6px 10px;border-radius:999px;background:var(--chip);border:1px solid var(--line)}
+    .badge.inv{background:#eef2ff;border-color:#e0e7ff}
+    h1{font-size:32px;margin:6px 0}
+    .muted{color:var(--muted)}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .btn{appearance:none;border:1px solid var(--line);background:var(--card);padding:10px 14px;border-radius:14px;cursor:pointer;font-weight:600}
+    .btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+    .btn.ghost{background:transparent}
+
+    /* At-a-glance */
+    .kpis .item{display:flex;gap:10px;align-items:flex-start}
+    .kpis .title{font-size:12px;color:var(--muted)}
+
+    /* Tabs (CSS only, radio hack) */
+    .tabs{margin-top:10px}
+    .tab-controls{display:flex;gap:8px;flex-wrap:wrap}
+    .tab-controls label{padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:#fff;cursor:pointer;font-weight:600}
+    .tab-controls label:hover{border-color:#cbd5e1}
+    .tab{display:none}
+    .tab:checked + label{background:var(--badge);border-color:#c7d2fe}
+    .tab-panel{display:none;margin-top:12px}
+    #tab1:checked ~ #panel1,
+    #tab2:checked ~ #panel2,
+    #tab3:checked ~ #panel3,
+    #tab4:checked ~ #panel4,
+    #tab5:checked ~ #panel5{display:grid;grid-template-columns:1fr;gap:14px}
+    @media(min-width:900px){
+      #tab1:checked ~ #panel1,
+      #tab2:checked ~ #panel2,
+      #tab3:checked ~ #panel3,
+      #tab4:checked ~ #panel4,
+      #tab5:checked ~ #panel5{grid-template-columns:repeat(3,1fr)}
+    }
+
+    /* Program card */
+    .program{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px}
+    .program h4{margin:0 0 8px 0;font-size:15px}
+    .chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+    .chip{font-size:11px;padding:4px 8px;border-radius:999px;border:1px solid var(--line);background:var(--chip)}
+    .program .row{display:flex;justify-content:space-between;gap:10px;margin-top:10px}
+    .program .btn{padding:8px 10px;border-radius:12px}
+
+    /* Admissions */
+    ul.clean{padding-left:18px;margin:8px 0}
+    ul.clean li{margin:6px 0}
+
+    /* Tuition grid */
+    .tuition{display:grid;gap:10px;grid-template-columns:1fr}
+    @media(min-width:640px){.tuition{grid-template-columns:repeat(2,1fr)}}
+    .tile{border:1px solid var(--line);border-radius:12px;padding:10px;background:#fff}
+    .tile .p{font-size:12px;color:var(--muted)}
+
+    /* FAQ */
+    details{border:1px solid var(--line);border-radius:12px;background:#fff;margin-bottom:10px}
+    summary{cursor:pointer;padding:12px 14px;font-weight:600}
+    details > div{padding:0 14px 14px;color:var(--muted)}
+
+    /* Contact */
+    .contact .row{border:1px solid var(--line);border-radius:12px;padding:10px}
+
+    /* Map */
+    .map{border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+
+    /* Footer hint */
+    .hint{font-size:12px;color:var(--muted);text-align:center;margin:26px 0}
+  </style>
+</head>
+<body>
+  <header class="container hero">
+    <div class="grid grid-2">
+      <div>
+        <div class="badges">
+          <span class="badge">Private</span>
+          <span class="badge">Established 2001</span>
+          <span class="badge inv">EN / PL</span>
+        </div>
+        <h1>VIZJA University (UEHS)</h1>
+        <p class="muted">Per scientiam ad sapientiam</p>
+        <div class="badges" style="margin-top:10px">
+          <span class="badge">CEEMAN IQA accredited School of Business</span>
+          <span class="badge">Strong Psychology programs</span>
+          <span class="badge">Modern city campus (118+ classrooms)</span>
+          <span class="badge">Popular among international students</span>
+        </div>
+        <div class="actions">
+          <a class="btn primary" href="https://vizja.pl" target="_blank" rel="noreferrer">Resmi Site</a>
+          <button class="btn">Favorilere ekle</button>
+          <button class="btn ghost">Karşılaştır</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="body">
+          <h3>Konum & Kampüs</h3>
+          <div class="muted">Vizja Park</div>
+          <div>Okopowa 59, 01-043 Warsaw • Wola</div>
+          <div class="map" style="margin-top:10px">
+            <iframe title="Harita" src="https://www.google.com/maps?q=Okopowa+59+Warsaw&output=embed" width="100%" height="220" loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- At a glance -->
+    <section class="grid grid-3 kpis">
+      <div class="card"><div class="body item"><div><div class="title">Program Dilleri</div><div>English · Polish</div></div></div></div>
+      <div class="card"><div class="body item"><div><div class="title">Dönem Başlangıçları</div><div>Fall (Oct) • Spring (Feb/Mar)</div></div></div></div>
+      <div class="card"><div class="body item"><div><div class="title">Öne Çıkan Alanlar</div><div>Business, Psychology, Computing, Health</div></div></div></div>
+    </section>
+
+    <!-- Programs Tabs -->
+    <section style="margin-top:18px">
+      <h2 style="margin:0 0 10px 0">Programlar</h2>
+      <!-- Radios -->
+      <input class="tab" type="radio" name="tabs" id="tab1" checked>
+      <label for="tab1" class="tab-btn">School of Business & Economics</label>
+
+      <input class="tab" type="radio" name="tabs" id="tab2">
+      <label for="tab2" class="tab-btn">School of Human Sciences</label>
+
+      <input class="tab" type="radio" name="tabs" id="tab3">
+      <label for="tab3" class="tab-btn">School of Medical & Health</label>
+
+      <input class="tab" type="radio" name="tabs" id="tab4">
+      <label for="tab4" class="tab-btn">School of Humanities & Arts</label>
+
+      <input class="tab" type="radio" name="tabs" id="tab5">
+      <label for="tab5" class="tab-btn">School of Computing</label>
+
+      <!-- Panels -->
+      <div id="panel1" class="tab-panel">
+        <div class="program">
+          <h4>Finance & Accounting (BA)</h4>
+          <div class="muted">Süre: 3 yıl • Dil: EN / PL</div>
+          <div class="chips"><span class="chip">EU & CIS: €2,800/yr</span><span class="chip">Other: €3,800/yr</span></div>
+          <div class="row"><button class="btn">Detay</button><button class="btn primary">Başvur</button></div>
+        </div>
+        <div class="program">
+          <h4>Management (BA)</h4>
+          <div class="muted">Süre: 3 yıl • Dil: EN / PL</div>
+          <div class="chips"><span class="chip">EU & CIS: €2,800/yr</span><span class="chip">Other: €3,800/yr</span></div>
+          <div class="row"><button class="btn">Detay</button><button class="btn primary">Başvur</button></div>
+        </div>
+        <div class="program">
+          <h4>MBA (Postgraduate)</h4>
+          <div class="muted">Süre: 1–2 yıl • Dil: EN</div>
+          <div class="chips"><span class="chip">Ücret: —</span></div>
+          <div class="row"><button class="btn">Detay</button><button class="btn primary">Başvur</button></div>
+        </div>
+      </div>
+
+      <div id="panel2" class="tab-panel">
+        <div class="program">
+          <h4>Psychology (BA)</h4>
+          <div class="muted">Süre: 3 yıl • Dil: EN / PL</div>
+          <div class="chips"><span class="chip">EU & CIS: €2,800/yr</span><span class="chip">Other: €3,800/yr</span></div>
+          <div class="row"><button class="btn">Detay</button><button class="btn primary">Başvur</button></div>
+        </div>
+        <div class="program">
+          <h4>Clinical Psychology (MA)</h4>
+          <div class="muted">Süre: 2 yıl • Dil: EN / PL</div>
+          <div class="chips"><span class="chip">EU & CIS: €2,900/yr</span><span class="chip">Other: €3,900/yr</span></div>
+          <div class="row"><button class="btn">Detay</button><button class="btn primary">Başvur</button></div>
+        </div>
+        <div class="program">
+          <h4>Cognitive Science (BA)</h4>
+          <div class="muted">Süre: 3 yıl • Dil: EN / PL</div>
+          <div class="chips"><span class="chip">EU & CIS: €2,700/yr</span><span class="chip">Other: €3,700/yr</span></div>
+          <div class="row"><button class="btn">Detay</button><button class="btn primary">Başvur</button></div>
+        </div>
+      </div>
+
+      <div id="panel3" class="tab-panel">
+        <div class="program">
+          <h4>Dietetics (BA)</h4>
+          <div class="muted">Süre: 3 yıl • Dil: EN / PL</div>
+          <div class="chips"><span class="chip">EU & CIS: €2,700/yr</span><span class="chip">Other: €3,700/yr</span></div>
+          <div class="row"><button class="btn">Detay</button><button class="btn primary">Başvur</button></div>
+        </div>
+        <div class="program">
+          <h4>Medical Analytics (long-cycle MA)</h4>
+          <div class="muted">Süre: 5 yıl • Dil: EN</div>
+          <div class="chips"><span class="chip">EU & CIS: €6,900/yr</span><span class="chip">Other: €7,900/yr</span></div>
+          <div class="row"><button class="btn">Detay</button><button class="btn primary">Başvur</button></div>
+        </div>
+        <div class="program">
+          <h4>Electroradiology (BA)</h4>
+          <div class="muted">Süre: 3 yıl • Dil: EN / PL</div>
+          <div class="chips"><span class="chip">EU & CIS: €2,800/yr</span><span class="chip">Other: €3,800/yr</span></div>
+          <div class="row"><button class="btn">Detay</button><button class="btn primary">Başvur</button></div>
+        </div>
+      </div>
+
+      <div id="panel4" class="tab-panel">
+        <div class="program">
+          <h4>Architecture (BA)</h4>
+          <div class="muted">Süre: 4 yıl • Dil: EN / PL</div>
+          <div class="chips"><span class="chip">EU & CIS: €3,000/yr</span><span class="chip">Other: €4,000/yr</span></div>
+          <div class="row"><button class="btn">Detay</button><button class="btn primary">Başvur</button></div>
+        </div>
+        <div class="program">
+          <h4>International Relations & Security (MA)</h4>
+          <div class="muted">Süre: 2 yıl • Dil: EN / PL</div>
+          <div class="chips"><span class="chip">EU & CIS: €2,800/yr</span><span class="chip">Other: €3,800/yr</span></div>
+          <div class="row"><button class="btn">Detay</button><button class="btn primary">Başvur</button></div>
+        </div>
+      </div>
+
+      <div id="panel5" class="tab-panel">
+        <div class="program">
+          <h4>Computer Science — Project Mgmt & UX (Eng.)</h4>
+          <div class="muted">Süre: 4 yıl • Dil: EN / PL</div>
+          <div class="chips"><span class="chip">EU & CIS: €2,800–3,000/yr</span><span class="chip">Other: €3,800–4,000/yr</span></div>
+          <div class="row"><button class="btn">Detay</button><button class="btn primary">Başvur</button></div>
+        </div>
+        <div class="program">
+          <h4>Computer Science — Web Applications (Eng.)</h4>
+          <div class="muted">Süre: 4 yıl • Dil: EN / PL</div>
+          <div class="chips"><span class="chip">EU & CIS: €2,800–3,000/yr</span><span class="chip">Other: €3,800–4,000/yr</span></div>
+          <div class="row"><button class="btn">Detay</button><button class="btn primary">Başvur</button></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Admissions & Tuition -->
+    <section class="grid grid-2" style="margin-top:18px">
+      <div class="card"><div class="body">
+        <h3>Kabul Bilgileri</h3>
+        <ul class="clean">
+          <li>Lisans için lise diploması, yüksek lisans için lisans diploması</li>
+          <li>İngilizce yeterlilik (min. B2) — sertifika yoksa kurum içi test</li>
+          <li>Gerektiğinde apostil / tasdik</li>
+          <li>Pasaport / Kimlik (kontrol amaçlı)</li>
+          <li>Sağlık sigortası (kontrol amaçlı)</li>
+        </ul>
+        <div class="muted" style="font-size:12px">Not: Program bazında ek şartlar (mülakat vb.) olabilir.</div>
+      </div></div>
+
+      <div class="card"><div class="body">
+        <h3>Harç Örnekleri</h3>
+        <div class="tuition">
+          <div class="tile"><div class="p">Finance & Accounting (BA)</div><div>EU & CIS: €2,800/yr</div><div>Other: €3,800/yr</div></div>
+          <div class="tile"><div class="p">Psychology (BA)</div><div>EU & CIS: €2,800/yr</div><div>Other: €3,800/yr</div></div>
+          <div class="tile"><div class="p">Clinical Psychology (MA)</div><div>EU & CIS: €2,900/yr</div><div>Other: €3,900/yr</div></div>
+          <div class="tile"><div class="p">Architecture (BA)</div><div>EU & CIS: €3,000/yr</div><div>Other: €4,000/yr</div></div>
+          <div class="tile"><div class="p">Medical Analytics (long-cycle MA)</div><div>EU & CIS: €6,900/yr</div><div>Other: €7,900/yr</div></div>
+        </div>
+      </div></div>
+    </section>
+
+    <!-- FAQ + Contact -->
+    <section class="grid grid-2" style="margin-top:18px">
+      <div>
+        <h3 style="margin:10px 0">Sık Sorulan Sorular</h3>
+        <details><summary>İngilizce seviyesi nedir?</summary><div>Minimum B2. Sertifika yoksa kurum içi test uygulanabilir.</div></details>
+        <details><summary>Başvuru dönemleri?</summary><div>Güz ve Bahar alımları. Detay tarihler program bazında duyurulur.</div></details>
+        <details><summary>Yurt imkânı var mı?</summary><div>Çevrede özel yurt ve paylaşımlı konaklama seçenekleri bulunur.</div></details>
+        <details><summary>Program dili?</summary><div>Birçok lisans ve yüksek lisans programı İngilizce ve Lehçe sunulmaktadır.</div></details>
+      </div>
+      <div class="card contact"><div class="body">
+        <h3>İletişim</h3>
+        <div class="row">
+          <div style="font-weight:600">Student Affairs / International Center</div>
+          <div class="muted">Pzt 10–16, Sal/Per 8:30–16, Cum 10–16 (12–18*)</div>
+          <div>E-posta: studentaffairsoffice@vizja.pl</div>
+          <div>Telefon: +48 22 536 54 20</div>
+        </div>
+      </div></div>
+    </section>
+
+    <p class="hint">Bu sayfa örnek amaçlı hazırlanmıştır. Ücret ve içerikler programa göre değişebilir.</p>
+  </main>
+
+
+  <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+<script type="module">
+	import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+	createChat({
+		webhookUrl: 'https://automation.konuk.me/webhook/4091fa09-fb9a-4039-9411-7104d213f601/chat'
+	});
+</script>
+</body>
+</html>
