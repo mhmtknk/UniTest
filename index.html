@@ -305,7 +305,11 @@
 	import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
 
 	createChat({
-		webhookUrl: 'https://automation.konuk.me/webhook/4091fa09-fb9a-4039-9411-7104d213f601/chat'
+		webhookUrl: 'https://automation.konuk.me/webhook/4091fa09-fb9a-4039-9411-7104d213f601/chat',
+    initialMessages: [
+		'Hi there! 👋',
+		'My name is UNIBOT. How can I assist you today?'
+	]
 	});
 </script>
 </body>
